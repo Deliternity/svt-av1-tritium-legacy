@@ -41,7 +41,7 @@ jobs:
           Ref `${{ github.ref }}` | Commit `${{ github.sha }}` | Dolby Vision & HDR10+ | FFMS2  
           Windows | x86-64 | LLVM Project Clang LLD | winthread | `x86-64-v3` + `znver2` (-march=x86-64-v2 -mtune=generic) | LTO PGO  
 
-          On Windows, FFMS2 is built into the binary and is always available.
+          At the moment FFMS2 is not available in this build.
 
           On x86-64 systems, no matter if you're on an Intel or AMD system, you should try these builds in the order of `icelake-server` + `znver5` ⇒ `znver2` ⇒ `x86-64-v3` + `znver2`.  
           If your CPU doesn't support the features required by the `icelake-server` + `znver5` version, often indicated by crashing outright when attempting to make any encodes, you can try the `znver2` version and see if that works. If not, then the `x86-64-v3` + `znver2` version, which should always work on any modern systems.  
@@ -50,8 +50,8 @@ jobs:
           Thanks to studies and contributions from afed, Emre, Ironclad, Itachi Uchiha, Khaoklong, Miss Ashenlight, Soda, SwareJonge, Trix, Yiss, and other people in the community for discovering the method to build the fastest binary.  
         prerelease: false
         make_latest: "true"
-
-
+# to write later when ffms is done
+# On Windows, FFMS2 is built into the binary and is always available.
   build-windows-x86-64:
     needs: [tag, release]
     runs-on: "windows-latest"
@@ -64,7 +64,8 @@ jobs:
         fetch-depth: 0
         fetch-tags: true
 
-    - uses: Deliternity/svt-av1-tritium-legacy@main
+ #   - uses: Deliternity/svt-av1-tritium-legacy@main
+    - uses: Akatmks/build-svt-av1@v1
       with:
         pgo-video: "FoodMarket2"
         pgo-parameters: "--crf 20.00 --tune 0 --film-grain 8 --enable-dlf 2"
@@ -96,12 +97,13 @@ jobs:
         files: BuildAction/znver2/static/ffms2/Windows_x86-64_ffms2_znver2.tar.xz
       if: ${{ steps.detect-znver2.outcome != 'failure' }}
 
-    - run: ls BuildAction/x86-64-v3+znver2/static/ffms2/SvtAv1EncApp.exe
-    - run: cd BuildAction/x86-64-v3+znver2/static/ffms2 && tar cJf Windows_x86-64_ffms2_x86-64-v3+znver2.tar.xz SvtAv1EncApp.exe
+#     - run: ls BuildAction/x86-64-v3+znver2/static/ffms2/SvtAv1EncApp.exe
+    - run: ls BuildAction/x86-64-v3+znver2/static/SvtAv1EncApp.exe
+    - run: cd BuildAction/x86-64-v3+znver2/static/tar cJf Windows_x86-64_x86-64-v3+znver2.tar.xz SvtAv1EncApp.exe
     - uses: softprops/action-gh-release@v3
       with:
         tag_name: ${{ needs.tag.outputs.tag }}
-        files: BuildAction/x86-64-v3+znver2/static/ffms2/Windows_x86-64_ffms2_x86-64-v3+znver2.tar.xz
+        files: BuildAction/x86-64-v3+znver2/static/Windows_x86-64_x86-64-v3+znver2.tar.xz
 
 
 #  build-windows-arm64:

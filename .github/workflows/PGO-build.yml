@@ -41,7 +41,7 @@ jobs:
           Ref `${{ github.ref }}` | Commit `${{ github.sha }}` | Dolby Vision & HDR10+ | FFMS2  
           Windows | x86-64 | LLVM Project Clang LLD | winthread | `x86-64-v3` + `znver2` (-march=x86-64-v2 -mtune=generic) | LTO PGO  
 
-          A built-in FFMS2 is not available at the moment in x86-64v2 version.
+          On Windows, FFMS2 is built into the binary and is always available.
 
           On x86-64 systems, no matter if you're on an Intel or AMD system, you should try these builds in the order of `icelake-server` + `znver5` ⇒ `znver2` ⇒ `x86-64-v3` + `znver2`.  
           If your CPU doesn't support the features required by the `icelake-server` + `znver5` version, often indicated by crashing outright when attempting to make any encodes, you can try the `znver2` version and see if that works. If not, then the `x86-64-v3` + `znver2` version, which should always work on any modern systems.  
@@ -64,7 +64,7 @@ jobs:
         fetch-depth: 0
         fetch-tags: true
 
-    - uses: Akatmks/build-svt-av1@v1
+    - uses: Deliternity/svt-av1-tritium-legacy@main
       with:
         pgo-video: "FoodMarket2"
         pgo-parameters: "--crf 20.00 --tune 0 --film-grain 8 --enable-dlf 2"
@@ -116,7 +116,7 @@ jobs:
 #        fetch-depth: 0
 #        fetch-tags: true
 #
-#    - uses: Akatmks/build-svt-av1@v1
+#    - uses: Deliternity/svt-av1-tritium-legacy@main
 #      with:
 #        pgo-video: "FoodMarket2"
 #        pgo-parameters: "--crf 20.00 --tune 0 --film-grain 8 --enable-dlf 2"
@@ -139,7 +139,7 @@ jobs:
   #       fetch-depth: 0
   #       fetch-tags: true
 
-  #   - uses: Akatmks/build-svt-av1@v1
+  #   - uses: Deliternity/svt-av1-tritium-legacy@main
   #     with:
   #       pgo-video: "FoodMarket2"
   #       pgo-parameters: "--crf 20.00 --tune 0 --film-grain 8 --enable-dlf 2"
@@ -215,7 +215,7 @@ jobs:
  #       fetch-depth: 0
  #       fetch-tags: true
 
- #   - uses: Akatmks/build-svt-av1@v1
+ #   - uses: Deliternity/svt-av1-tritium-legacy@main
  #     with:
  #       pgo-video: "FoodMarket2"
  #       pgo-parameters: "--crf 20.00 --tune 0 --film-grain 8 --enable-dlf 2"
@@ -245,7 +245,7 @@ jobs:
  #       fetch-depth: 0
  #       fetch-tags: true
 
- #   - uses: Akatmks/build-svt-av1@v1
+ #   - uses: Deliternity/svt-av1-tritium-legacy@main
  #     with:
  #       pgo-video: "FoodMarket2"
  #       pgo-parameters: "--crf 20.00 --tune 0 --film-grain 8 --enable-dlf 2"

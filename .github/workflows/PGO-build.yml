@@ -66,7 +66,7 @@ jobs:
 
  #   - uses: Deliternity/svt-av1-tritium-legacy@main
      # - uses: Akatmks/build-svt-av1@v1
-    - uses: Deliternity/svt-av1-tritium-legacy
+    - uses: Deliternity/svt-av1-tritium-legacy@main
       with:
         pgo-video: "false"
                 # pgo-video: "FoodMarket2"

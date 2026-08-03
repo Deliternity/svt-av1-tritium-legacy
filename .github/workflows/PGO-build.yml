@@ -41,7 +41,8 @@ jobs:
           Ref `${{ github.ref }}` | Commit `${{ github.sha }}` | Dolby Vision & HDR10+ | FFMS2  
           Windows | x86-64 | LLVM Project Clang LLD | winthread | `x86-64-v3` + `znver2` (-march=x86-64-v2 -mtune=generic) | LTO PGO  
 
-          At the moment FFMS2 is not available in this build.
+          
+          On Windows, FFMS2 is built into the binary and is always available
 
           On x86-64 systems, no matter if you're on an Intel or AMD system, you should try these builds in the order of `icelake-server` + `znver5` ⇒ `znver2` ⇒ `x86-64-v3` + `znver2`.  
           If your CPU doesn't support the features required by the `icelake-server` + `znver5` version, often indicated by crashing outright when attempting to make any encodes, you can try the `znver2` version and see if that works. If not, then the `x86-64-v3` + `znver2` version, which should always work on any modern systems.  
@@ -52,6 +53,7 @@ jobs:
         make_latest: "true"
 # to write later when ffms is done
 # On Windows, FFMS2 is built into the binary and is always available.
+# At the moment FFMS2 is not available in this build.
   build-windows-x86-64:
     needs: [tag, release]
     runs-on: "windows-latest"

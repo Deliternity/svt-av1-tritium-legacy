@@ -65,15 +65,18 @@ jobs:
         fetch-tags: true
 
  #   - uses: Deliternity/svt-av1-tritium-legacy@main
-    - uses: Akatmks/build-svt-av1@v1
+     # - uses: Akatmks/build-svt-av1@v1
+    - uses: Deliternity/svt-av1-tritium-legacy
       with:
-        pgo-video: "FoodMarket2"
-        pgo-parameters: "--crf 20.00 --tune 0 --film-grain 8 --enable-dlf 2"
-        ffms2: "false"
-        dovi-hdr10plus: "true"
+        pgo-video: "false"
+                # pgo-video: "FoodMarket2"
+        # pgo-parameters: "--crf 20.00 --tune 0 --film-grain 8 --enable-dlf 2"
+        ffms2: "true"
+        dovi-hdr10plus: "false"
         base-arch-only: "true"
         cflags-profiling: "-march=x86-64-v2 -mtune=generic"
         cflags-final: "-march=x86-64-v2 -mtune=generic"
+        static: "true"
 
     # - id: detect-icelake-server-znver5
     #   run: ls BuildAction/icelake-server+znver5/static/ffms2/SvtAv1EncApp.exe
@@ -98,14 +101,14 @@ jobs:
     #   if: ${{ steps.detect-znver2.outcome != 'failure' }}
 
 #     - run: ls BuildAction/x86-64-v3+znver2/static/ffms2/SvtAv1EncApp.exe
-    - run: ls BuildAction/x86-64-v3+znver2/static/SvtAv1EncApp.exe
+    - run: ls BuildAction/x86-64-v3+znver2/static/ffms2/SvtAv1EncApp.exe
     # - run: cd BuildAction/x86-64-v3+znver2/static/ffms2 && tar cJf Windows_x86-64_ffms2_x86-64-v3+znver2.tar.xz SvtAv1EncApp.exe
-    - run: cd BuildAction/x86-64-v3+znver2/static/tar  Windows_x86-64_x86-64-v3+znver2.tar.gz SvtAv1EncApp.exe
+    - run: cd BuildAction/x86-64-v3+znver2/static/ffms2 && tar cJf Windows_x86-64_ffms2_x86-64-v3+znver2.tar.gz SvtAv1EncApp.exe
     - uses: softprops/action-gh-release@v3
       with:
         tag_name: ${{ needs.tag.outputs.tag }}
         # files: BuildAction/x86-64-v3+znver2/static/ffms2/Windows_x86-64_ffms2_x86-64-v3+znver2.tar.xz
-        files: BuildAction/x86-64-v3+znver2/static/Windows_x86-64_x86-64-v3+znver2.tar.gz
+        files: BuildAction/x86-64-v3+znver2/static/ffms2/Windows_x86-64_ffms2_x86-64-v3+znver2.tar.gz
 
 
 #  build-windows-arm64:

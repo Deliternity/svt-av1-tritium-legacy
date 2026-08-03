@@ -74,7 +74,7 @@ jobs:
                 # pgo-video: "FoodMarket2"
         # pgo-parameters: "--crf 20.00 --tune 0 --film-grain 8 --enable-dlf 2"
         ffms2: "true"
-        dovi-hdr10plus: "true"
+        dovi-hdr10plus: "false"
         base-arch-only: "true"
         cflags-profiling: "-march=x86-64-v2 -mtune=generic"
         cflags-final: "-march=x86-64-v2 -mtune=generic"
@@ -94,7 +94,7 @@ jobs:
     - id: detect-znver2
       run: ls BuildAction/znver2/static/ffms2/SvtAv1EncApp.exe
       continue-on-error: true
-    - run: cd BuildAction/znver2/static/ffms2 && tar cJf Windows_x86-64_ffms2_znver2.tar.xz SvtAv1EncApp.exe
+    - run: cd BuildAction/znver2/static/ffms2 && tar cJf Windows_x86-64_ffms2_znver2.tar.gz SvtAv1EncApp.exe
       if: ${{ steps.detect-znver2.outcome != 'failure' }}
     - uses: softprops/action-gh-release@v3
       with:
@@ -105,7 +105,7 @@ jobs:
 #     - run: ls BuildAction/x86-64-v3+znver2/static/ffms2/SvtAv1EncApp.exe
     - run: ls BuildAction/x86-64-v3+znver2/static/ffms2/SvtAv1EncApp.exe
     # - run: cd BuildAction/x86-64-v3+znver2/static/ffms2 && tar cJf Windows_x86-64_ffms2_x86-64-v3+znver2.tar.xz SvtAv1EncApp.exe
-    - run: cd BuildAction/x86-64-v3+znver2/static/ffms2 && tar cJf Windows_x86-64_ffms2_x86-64-v3+znver2.tar.xz SvtAv1EncApp.exe
+    - run: cd BuildAction/x86-64-v3+znver2/static/ffms2 && tar cJf Windows_x86-64_ffms2_x86-64-v3+znver2.tar.gz SvtAv1EncApp.exe
     - uses: softprops/action-gh-release@v3
       with:
         tag_name: ${{ needs.tag.outputs.tag }}

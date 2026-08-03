@@ -100,12 +100,12 @@ jobs:
 #     - run: ls BuildAction/x86-64-v3+znver2/static/ffms2/SvtAv1EncApp.exe
     - run: ls BuildAction/x86-64-v3+znver2/static/SvtAv1EncApp.exe
     # - run: cd BuildAction/x86-64-v3+znver2/static/ffms2 && tar cJf Windows_x86-64_ffms2_x86-64-v3+znver2.tar.xz SvtAv1EncApp.exe
-    - run: cd BuildAction/x86-64-v3+znver2/static/tar cJf Windows_x86-64_x86-64-v3+znver2.tar.xz SvtAv1EncApp.exe
+    - run: cd BuildAction/x86-64-v3+znver2/static/tar  Windows_x86-64_x86-64-v3+znver2.tar.gz SvtAv1EncApp.exe
     - uses: softprops/action-gh-release@v3
       with:
         tag_name: ${{ needs.tag.outputs.tag }}
         # files: BuildAction/x86-64-v3+znver2/static/ffms2/Windows_x86-64_ffms2_x86-64-v3+znver2.tar.xz
-        files: BuildAction/x86-64-v3+znver2/static/ffms2/Windows_x86-64_x86-64-v3+znver2.tar.xz
+        files: BuildAction/x86-64-v3+znver2/static/Windows_x86-64_x86-64-v3+znver2.tar.gz
 
 
 #  build-windows-arm64:

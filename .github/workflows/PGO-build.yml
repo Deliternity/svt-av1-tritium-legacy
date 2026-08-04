@@ -91,7 +91,7 @@ jobs:
     #     files: BuildAction/icelake-server+znver5/static/ffms2/Windows_x86-64_ffms2_icelake-server+znver5.tar.xz
     #   if: ${{ steps.detect-icelake-server-znver5.outcome != 'failure' }}
 
-    - id: detect-znver2
+  #  - id: detect-znver2
       run: ls BuildAction/znver2/static/ffms2/SvtAv1EncApp.exe
       continue-on-error: true
     - run: cd BuildAction/znver2/static/ffms2 && tar cJf Windows_x86-64_ffms2_znver2.tar.xz SvtAv1EncApp.exe
@@ -100,7 +100,7 @@ jobs:
       with:
         tag_name: ${{ needs.tag.outputs.tag }}
         files: BuildAction/znver2/static/ffms2/Windows_x86-64_ffms2_znver2.tar.xz
-      if: ${{ steps.detect-znver2.outcome != 'failure' }}
+   #   if: ${{ steps.detect-znver2.outcome != 'failure' }}
 
     - id: detect-x64-64v2
       run: ls BuildAction/x64-64v2/static/ffms2/SvtAv1EncApp.exe

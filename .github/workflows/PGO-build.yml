@@ -74,7 +74,7 @@ jobs:
         pgo-video: "FoodMarket2"
                 # pgo-video: "FoodMarket2"
         pgo-parameters: "--crf 20.00 --tune 0 --film-grain 8 --enable-dlf 2"
-        ffms2: "true"
+        ffms2: "false"
         dovi-hdr10plus: "false"
         base-arch-only: "true"
         cflags-profiling: "-march=x86-64-v2 -mtune=generic"

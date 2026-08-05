@@ -66,7 +66,7 @@ jobs:
         fetch-depth: 0
         fetch-tags: true
 
-# trying again
+# trying again and again
  #   - uses: Deliternity/svt-av1-tritium-legacy@main
      # - uses: Akatmks/build-svt-av1@v1
     - uses: Deliternity/build-svt-av1@v1

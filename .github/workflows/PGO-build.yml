@@ -69,13 +69,13 @@ jobs:
 # trying again and again
  #   - uses: Deliternity/svt-av1-tritium-legacy@main
      # - uses: Akatmks/build-svt-av1@v1
-    - uses: Deliternity/build-svt-av1@v1
+    - uses: Deliternity/build-svt-av1@master
       with:
         pgo-video: "FoodMarket2"
                 # pgo-video: "FoodMarket2"
         pgo-parameters: "--crf 20.00 --tune 0 --film-grain 8 --enable-dlf 2"
-        ffms2: "false"
-        dovi-hdr10plus: "false"
+        ffms2: "true"
+        dovi-hdr10plus: "true"
         base-arch-only: "true"
         cflags-profiling: "-march=x86-64-v2 -mtune=generic"
         cflags-final: "-march=x86-64-v2 -mtune=generic"
